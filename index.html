@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <div class="bg-orb orb3"></div>
+
+    <div class="wrapper">
+
+        <!-- Header -->
+        <header class="header">
+            <h1 class="header-title">Customer Churn<br><span>Prediction</span></h1>
+            <p class="header-sub">Fill in the customer details below to predict churn probability</p>
+        </header>
+
+        <!-- Form Card -->
+        <form method="POST" action="/" class="form-card">
+
+            <div class="section-label">Personal Info</div>
+            <div class="grid grid-3">
+                <div class="field">
+                    <label>Gender</label>
+                    <select name="gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Senior Citizen</label>
+                    <select name="SeniorCitizen">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Partner</label>
+                    <select name="Partner">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Dependents</label>
+                    <select name="Dependents">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Tenure <span class="unit">(months)</span></label>
+                    <input type="number" name="tenure" placeholder="e.g. 24" required>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section-label">Services</div>
+            <div class="grid grid-3">
+                <div class="field">
+                    <label>Phone Service</label>
+                    <select name="PhoneService">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Multiple Lines</label>
+                    <select name="MultipleLines">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No phone service">No Phone Service</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Internet Service</label>
+                    <select name="InternetService">
+                        <option value="DSL">DSL</option>
+                        <option value="Fiber optic">Fiber Optic</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Online Security</label>
+                    <select name="OnlineSecurity">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No Internet Service</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Online Backup</label>
+                    <select name="OnlineBackup">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No Internet Service</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Device Protection</label>
+                    <select name="DeviceProtection">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No Internet Service</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Tech Support</label>
+                    <select name="TechSupport">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No Internet Service</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Streaming TV</label>
+                    <select name="StreamingTV">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No Internet Service</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Streaming Movies</label>
+                    <select name="StreamingMovies">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="No internet service">No Internet Service</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section-label">Billing & Contract</div>
+            <div class="grid grid-3">
+                <div class="field">
+                    <label>Contract</label>
+                    <select name="Contract">
+                        <option value="Month-to-month">Month-to-Month</option>
+                        <option value="One year">One Year</option>
+                        <option value="Two year">Two Year</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Paperless Billing</label>
+                    <select name="PaperlessBilling">
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Payment Method</label>
+                    <select name="PaymentMethod">
+                        <option value="Electronic check">Electronic Check</option>
+                        <option value="Mailed check">Mailed Check</option>
+                        <option value="Bank transfer (automatic)">Bank Transfer (Auto)</option>
+                        <option value="Credit card (automatic)">Credit Card (Auto)</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Monthly Charges <span class="unit">($)</span></label>
+                    <input type="number" step="0.01" name="MonthlyCharges" placeholder="e.g. 65.50" required>
+                </div>
+                <div class="field">
+                    <label>Total Charges <span class="unit">($)</span></label>
+                    <input type="number" step="0.01" name="TotalCharges" placeholder="e.g. 1500.00" required>
+                </div>
+            </div>
+
+            <button type="submit" class="predict-btn">
+                <span>Run Prediction</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </button>
+
+        </form>
+
+        {% if prediction %}
+        <div class="result-card {% if '🔴' in prediction %}result-churn{% else %}result-safe{% endif %}">
+            <div class="result-icon">{% if '🔴' in prediction %}⚠️{% else %}✅{% endif %}</div>
+            <div class="result-text">
+                <h2>{{ prediction }}</h2>
+                <p>Churn Probability: <strong>{{ probability | round(2) }}%</strong></p>
+            </div>
+        </div>
+        {% endif %}
+
+        <footer class="footer">Built with Flask & Random Forest ML Model</footer>
+    </div>
+
+</body>
+</html>
